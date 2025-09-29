@@ -1,24 +1,19 @@
-const express = require('express')
-const cors = require('cors')
+const express = require("express");
+const cors = require("cors");
 
-const app = express()
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-app.use(cors())
-app.use(express.json())
+// importa os routers criados pelos membros
+const alunosRouter = require("./routes/alunos");
+const professoresRouter = require("./routes/professores");
 
+// usa os routers com prefixos diferentes
+app.use("/alunos", alunosRouter);
+app.use("/professores", professoresRouter);
 
-//Importar e mapear rota de alunos
-
-
-
-//Importar e mapear rota de professores
-
-
-
-app.listen(3000, () => {
-    console.log('Servidor rodando em http://localhost:3000')
-})
-
-
-
-
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
