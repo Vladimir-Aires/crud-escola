@@ -54,5 +54,4 @@ router.delete("/:id", (req, res) => {
   professores.splice(index, 1);
   res.json({ mensagem: "Professor removido com sucesso" });
 });
-
 module.exports = router;
