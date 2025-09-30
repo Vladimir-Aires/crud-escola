@@ -15,7 +15,7 @@ router.get("/:id", (req, res) => {
   res.json(prof);
 });
 
-router.post("/", (req, res) => {
+router.post("/professores", (req, res) => {
   const { nome, disciplina } = req.body;
   if (!nome || !disciplina) {
     return res.status(400).json({ erro: "Nome e disciplina são obrigatórios" });
