@@ -1,19 +1,19 @@
-const express = require("express");
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-// Array inicial de exemplo
+
 let alunos = [
   { id: 1, nome: "João", idade: 20 },
   { id: 2, nome: "Maria", idade: 22 }
 ];
 
 // GET - listar todos
-router.get("/", (req, res) => {
+router.get("/alunos", (req, res) => {
   res.json(alunos);
 });
 
 // GET por ID
-router.get("/:id", (req, res) => {
+router.get("/alunos/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const aluno = alunos.find(a => a.id === id);
   if (!aluno) {
@@ -27,7 +27,7 @@ router.post("/alunos", (req, res) => {
   const { nome, idade } = req.body;
 
   // validações básicas
-  if (!nome || !idade) {
+  if (!nome  || !idade) {
     return res.status(400).json({ erro: "Nome e idade são obrigatórios" });
   }
   if (alunos.some(a => a.nome === nome)) {
@@ -44,7 +44,7 @@ router.post("/alunos", (req, res) => {
 });
 
 // PUT - atualizar por ID
-router.put("/:id", (req, res) => {
+router.put("/alunos/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const { nome, idade } = req.body;
   const aluno = alunos.find(a => a.id === id);
@@ -52,7 +52,7 @@ router.put("/:id", (req, res) => {
   if (!aluno) {
     return res.status(404).json({ erro: "Aluno não encontrado" });
   }
-  if (!nome || !idade) {
+  if (!nome  || !idade) {
     return res.status(400).json({ erro: "Nome e idade são obrigatórios" });
   }
 
@@ -63,7 +63,7 @@ router.put("/:id", (req, res) => {
 });
 
 // DELETE - remover por ID
-router.delete("/:id", (req, res) => {
+router.delete("/alunos/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const index = alunos.findIndex(a => a.id === id);
 
