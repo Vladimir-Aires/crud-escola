@@ -23,7 +23,7 @@ router.get("/:id", (req, res) => {
 });
 
 // POST - criar novo
-router.post("/", (req, res) => {
+router.post("/alunos", (req, res) => {
   const { nome, idade } = req.body;
 
   // validações básicas

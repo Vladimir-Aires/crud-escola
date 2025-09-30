@@ -10,8 +10,8 @@ const alunosRouter = require("./routes/alunos");
 const professoresRouter = require("./routes/professores");
 
 // usa os routers com prefixos diferentes
-app.use("/alunos", alunosRouter);
-app.use("/professores", professoresRouter);
+app.use("/", alunosRouter);
+app.use("/", professoresRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => {
